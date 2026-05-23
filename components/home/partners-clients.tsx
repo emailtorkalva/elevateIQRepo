@@ -12,11 +12,13 @@ function LogoStrip({
   eyebrow,
   items,
   id,
+  footnote,
 }: {
   title: string;
   eyebrow: string;
   items: string[];
   id?: string;
+  footnote?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -48,6 +50,12 @@ function LogoStrip({
             </motion.span>
           ))}
         </motion.div>
+
+        {footnote && (
+          <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-muted-foreground">
+            {footnote}
+          </p>
+        )}
       </div>
     </section>
   );
@@ -56,9 +64,10 @@ function LogoStrip({
 export function Partners() {
   return (
     <LogoStrip
-      eyebrow="Ecosystem"
-      title="Our partners"
+      eyebrow="Technology ecosystem"
+      title="Platforms we implement daily"
       items={partners}
+      footnote="Names shown for identification only; elevateIQ is an independent consultancy and is not affiliated with or endorsed by these vendors unless a formal partnership agreement exists."
     />
   );
 }
@@ -67,9 +76,10 @@ export function ClientsStrip() {
   return (
     <LogoStrip
       id="clients"
-      eyebrow="Trust"
-      title="Our clients"
+      eyebrow="Who we serve"
+      title="Representative client profiles"
       items={clients}
+      footnote="Many engagements are under NDA. Profiles reflect industries and program types—not a public client list."
     />
   );
 }
