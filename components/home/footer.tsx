@@ -2,19 +2,29 @@ import Link from "next/link";
 
 import { LogoLink } from "@/components/brand/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { BRAND_NAME, BRAND_TAGLINE, CONTACT_EMAIL } from "@/lib/brand";
+import {
+  BRAND_NAME,
+  BRAND_TAGLINE,
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  HQ_ADDRESS,
+  LINKEDIN_URL,
+} from "@/lib/brand";
 import { serviceOfferings } from "@/lib/services";
 
 const footerLinks = {
   Company: [
     { label: "About Us", href: "/about" },
-    { label: "Careers", href: "#" },
-    { label: "Contact Us", href: "/#contact" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "Industries", href: "/industries" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact" },
   ],
   Legal: [
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
-    { label: "Security", href: "#" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
+    { label: "Security", href: "/security" },
   ],
 };
 
@@ -28,11 +38,26 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               {BRAND_TAGLINE}
             </p>
+            <address className="mt-4 space-y-1 text-sm not-italic text-muted-foreground">
+              <p>{HQ_ADDRESS}</p>
+              <p>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-brand">
+                  {CONTACT_EMAIL}
+                </a>
+              </p>
+              <p>
+                <a href={CONTACT_PHONE_HREF} className="hover:text-brand">
+                  {CONTACT_PHONE}
+                </a>
+              </p>
+            </address>
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-3 inline-block text-sm font-medium text-brand hover:underline"
             >
-              {CONTACT_EMAIL}
+              LinkedIn
             </a>
             <div className="mt-6 flex items-center gap-2">
               <span className="text-sm text-muted-foreground">Theme</span>
@@ -43,16 +68,24 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold">Services</h3>
             <ul className="mt-4 space-y-3">
-              {serviceOfferings.map((service) => (
+              {serviceOfferings.slice(0, 6).map((service) => (
                 <li key={service.slug}>
                   <Link
-                    href="/services"
+                    href={`/services/${service.slug}`}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {service.title}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/services"
+                  className="text-sm font-medium text-brand hover:underline"
+                >
+                  All services →
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -79,8 +112,8 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-muted-foreground">
-            Built for reliability · SOC 2 ready
+          <p className="text-center text-xs text-muted-foreground sm:text-right">
+            Independent consultancy · Client names used with permission or anonymized per NDA
           </p>
         </div>
       </div>
