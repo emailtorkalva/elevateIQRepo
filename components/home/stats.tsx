@@ -4,24 +4,16 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 import { SectionHeader } from "@/components/home/section-header";
+import { companyStats } from "@/lib/company";
 import { fadeUp, staggerContainer } from "@/lib/motion";
-
-const stats = [
-  { value: 150, suffix: "+", label: "IAM & security programs", format: "int" as const },
-  { value: 500, suffix: "+", label: "IT professionals placed", format: "int" as const },
-  { value: 99, suffix: "%", label: "Client satisfaction", format: "int" as const },
-  { value: 15, suffix: "+", label: "Years of consulting excellence", format: "int" as const },
-];
 
 function AnimatedNumber({
   value,
   suffix,
-  format,
   inView,
 }: {
   value: number;
   suffix: string;
-  format: "int" | "decimal";
   inView: boolean;
 }) {
   const [display, setDisplay] = useState(`0${suffix}`);
@@ -41,29 +33,22 @@ function AnimatedNumber({
     };
 
     requestAnimationFrame(tick);
-  }, [inView, value, suffix, format]);
+  }, [inView, value, suffix]);
 
   return <span>{display}</span>;
 }
 
 export function Stats() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section
-      id="impact"
-      className="relative overflow-hidden border-t border-border/60 py-24 sm:py-28"
-    >
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand/5 via-transparent to-transparent"
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="border-t border-border/60 py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Impact"
-          title="Delivering at enterprise scale"
-          description="Measurable outcomes across identity, cloud, data, and workforce programs."
+          eyebrow="By the numbers"
+          title="A track record you can verify in references"
+          description="Figures represent cumulative programs since 2012. Detailed references available during discovery."
           align="center"
           className="mx-auto"
         />
@@ -73,25 +58,18 @@ export function Stats() {
           variants={staggerContainer}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border/80 bg-border/80 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {stats.map((stat) => (
+          {companyStats.map((stat) => (
             <motion.div
               key={stat.label}
               variants={fadeUp}
-              className="flex flex-col items-center justify-center bg-card px-6 py-10 text-center sm:py-12"
+              className="rounded-2xl border border-border/80 bg-card px-6 py-8 text-center"
             >
-              <p className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl">
-                <AnimatedNumber
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  format={stat.format}
-                  inView={inView}
-                />
+              <p className="text-4xl font-semibold tracking-tight text-brand">
+                <AnimatedNumber value={stat.value} suffix={stat.suffix} inView={inView} />
               </p>
-              <p className="mt-3 max-w-[12rem] text-sm text-muted-foreground">
-                {stat.label}
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
