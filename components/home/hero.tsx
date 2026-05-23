@@ -6,13 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { BRAND_DOMAIN } from "@/lib/brand";
 import { heroSlides } from "@/lib/company";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const floatingCards = [
-  { label: "IAM implementations", value: "150+", sub: "enterprise deployments" },
-  { label: "Cloud migrations", value: "98%", sub: "on-time delivery" },
-  { label: "Managed uptime", value: "99.9%", sub: "SLA-backed ops" },
+  { label: "Programs delivered", value: "85+", sub: "since 2012" },
+  { label: "Client retention", value: "92%", sub: "renew or expand" },
+  { label: "Response time", value: "48h", sub: "for new inquiries" },
 ];
 
 export function Hero() {
@@ -96,7 +97,7 @@ export function Hero() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Button size="lg" className="h-11 px-6" asChild>
-              <Link href="#contact">
+              <Link href="/contact">
                 Contact us
                 <ArrowRight className="ml-1" data-icon="inline-end" />
               </Link>
@@ -120,7 +121,7 @@ export function Hero() {
                 <span className="size-2.5 rounded-full bg-amber-400/90" />
                 <span className="size-2.5 rounded-full bg-emerald-400/90" />
                 <span className="ml-2 font-mono text-xs text-muted-foreground">
-                  operations.elevateiq.com
+                  {BRAND_DOMAIN}
                 </span>
               </div>
               <div className="grid gap-px bg-border/40 p-4 sm:grid-cols-3 sm:p-6">
