@@ -1,15 +1,16 @@
 import { CompanyIntro } from "@/components/home/company-intro";
 import { CTA } from "@/components/home/cta";
-import { ClientsStrip, Partners } from "@/components/home/partners-clients";
+import { ClientsStrip } from "@/components/home/partners-clients";
+import { FeaturedCaseStudy } from "@/components/home/featured-case-study";
 import { Footer } from "@/components/home/footer";
 import { Hero } from "@/components/home/hero";
 import { Navbar } from "@/components/home/navbar";
+import { Partners } from "@/components/home/partners-clients";
+import { ProcessSection } from "@/components/home/process-section";
 import { Services } from "@/components/home/services";
 import { Stats } from "@/components/home/stats";
 import { Testimonials } from "@/components/home/testimonials";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
-import ContactForm from "@/components/contact/contact-form";
-
 
 export default function Home() {
   return (
@@ -17,14 +18,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <ClientsStrip />
         <CompanyIntro />
-        <WhyChooseUs />
-        <ContactForm/>
         <Services />
+        <FeaturedCaseStudy />
+        <ProcessSection />
+        <WhyChooseUs />
         <Stats />
         <Partners />
         <Testimonials />
-        <ClientsStrip />
         <CTA />
       </main>
       <Footer />
