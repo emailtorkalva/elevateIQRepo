@@ -47,10 +47,16 @@ export default function ContactForm() {
 
       if (!res.ok || !data.success) {
         setStatus("error");
-        setErrorMessage(
+        const detail =
           typeof data.message === "string"
             ? data.message
-            : "Something went wrong. Please try again or email us directly."
+            : typeof data.supabaseMessage === "string"
+              ? data.supabaseMessage
+              : "Something went wrong. Please try again or email us directly.";
+        setErrorMessage(
+          res.status === 500 && detail
+            ? `${detail} (HTTP ${res.status})`
+            : detail
         );
         return;
       }
