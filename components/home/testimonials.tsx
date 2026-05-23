@@ -5,29 +5,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 import { SectionHeader } from "@/components/home/section-header";
+import { testimonials } from "@/lib/company";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-
-const testimonials = [
-  {
-    quote:
-      "elevateIQ delivered our IAM rollout on schedule—SSO, PAM, and governance aligned to our compliance requirements. A true extension of our security team.",
-    author: "Director of Information Security",
-    role: "National Healthcare Organization",
-  },
-  {
-    quote:
-      "Their DevOps and cloud teams accelerated our migration while embedding security throughout the pipeline. Communication and runbooks were exceptional.",
-    author: "VP of Technology",
-    role: "Global Financial Services",
-  },
-  {
-    quote:
-      "Staffing and managed services gave us the depth we needed for a critical program—skilled consultants deployed within days, not months.",
-    author: "Head of IT Operations",
-    role: "Fortune 500 Retail",
-  },
-];
 
 export function Testimonials() {
   const ref = useRef<HTMLDivElement>(null);
@@ -37,9 +17,9 @@ export function Testimonials() {
     <section className="border-t border-border/60 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Client success"
-          title="Trusted across industries"
-          description="Healthcare, finance, retail, and technology leaders rely on us for IAM, cloud, DevOps, and workforce solutions."
+          eyebrow="Client feedback"
+          title="What leaders say about working with us"
+          description="Named references available under NDA. Summaries below reflect recent programs."
           align="center"
           className="mx-auto"
         />
@@ -68,7 +48,7 @@ export function Testimonials() {
               <figcaption className="mt-6 border-t border-border/60 pt-6">
                 <p className="font-medium">{item.author}</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">
-                  {item.role}
+                  {item.role}, {item.company}
                 </p>
               </figcaption>
             </motion.figure>
