@@ -19,9 +19,10 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/services", label: "Services" },
-  { href: "/about", label: "About Us" },
-  { href: "/#clients", label: "Clients" },
-  { href: "/#contact", label: "Contact Us" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/industries", label: "Industries" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -40,10 +41,7 @@ export function Navbar() {
       initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6",
-        scrolled && "pt-3"
-      )}
+      className={cn("fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6", scrolled && "pt-3")}
     >
       <nav
         className={cn(
@@ -72,7 +70,7 @@ export function Navbar() {
         <div className="flex items-center gap-1">
           <ThemeToggle className="hidden sm:inline-flex" />
           <Button size="sm" className="hidden md:inline-flex" asChild>
-            <Link href="/#contact">Contact us</Link>
+            <Link href="/contact">Contact us</Link>
           </Button>
 
           <Sheet open={open} onOpenChange={setOpen}>
@@ -106,7 +104,7 @@ export function Navbar() {
                   <ThemeToggle />
                 </div>
                 <Button className="mt-4 w-full" asChild>
-                  <Link href="/#contact" onClick={() => setOpen(false)}>
+                  <Link href="/contact" onClick={() => setOpen(false)}>
                     Contact us
                   </Link>
                 </Button>
