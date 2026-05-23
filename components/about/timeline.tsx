@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const milestones = [
   {
-    year: "2010",
+    year: "2012",
     title: "elevateIQ founded",
     description:
       "Launched as an IT consulting practice focused on identity management and enterprise application delivery.",
