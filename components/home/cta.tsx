@@ -6,8 +6,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { CONTACT_EMAIL } from "@/lib/brand";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  RESPONSE_TIME,
+} from "@/lib/brand";
 import { fadeUp } from "@/lib/motion";
 
 export function CTA() {
@@ -15,7 +19,7 @@ export function CTA() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="py-24 sm:py-28">
+    <section className="py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           ref={ref}
@@ -29,78 +33,48 @@ export function CTA() {
             aria-hidden
           />
 
-          <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                Contact us
-              </p>
-              <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-                Let&apos;s discuss your IT priorities
-              </h2>
-              <p className="mt-4 text-pretty text-muted-foreground sm:text-lg">
-                Share your requirements—IAM, cloud, DevOps, staffing, or managed
-                services—and our consultants will respond promptly.
-              </p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand hover:underline"
-              >
-                <Mail className="size-4" />
-                {CONTACT_EMAIL}
-              </a>
-              <Button size="lg" variant="outline" className="mt-6 h-11" asChild>
-                <Link href={`mailto:${CONTACT_EMAIL}`}>
-                  <Calendar />
-                  Email us directly
+          <div className="relative mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+              Next step
+            </p>
+            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+              Ready to scope your program?
+            </h2>
+            <p className="mt-4 text-pretty text-muted-foreground sm:text-lg">
+              Share your requirements and a principal consultant will respond {RESPONSE_TIME}.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button size="lg" className="h-11 w-full sm:w-auto" asChild>
+                <Link href="/contact">
+                  Contact us
                   <ArrowRight data-icon="inline-end" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="h-11 w-full sm:w-auto" asChild>
+                <Link href={`mailto:${CONTACT_EMAIL}`}>
+                  <Mail />
+                  Email
                 </Link>
               </Button>
             </div>
 
-            <form
-              className="space-y-4"
-              onSubmit={(e) => e.preventDefault()}
-              aria-label="Contact form"
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Name
-                  </label>
-                  <Input id="name" placeholder="Jane Smith" required />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Work email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="jane@company.com"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="company" className="text-sm font-medium">
-                  Company
-                </label>
-                <Input id="company" placeholder="Your organization" />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="interest" className="text-sm font-medium">
-                  Area of interest
-                </label>
-                <Input
-                  id="interest"
-                  placeholder="IAM, Cloud, DevOps, Staffing..."
-                />
-              </div>
-              <Button type="submit" size="lg" className="h-11 w-full sm:w-auto">
-                Contact us
-                <ArrowRight data-icon="inline-end" />
-              </Button>
-            </form>
+            <p className="mt-6 text-sm text-muted-foreground">
+              <a href={CONTACT_PHONE_HREF} className="hover:text-brand">
+                {CONTACT_PHONE}
+              </a>
+              {" · "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-brand">
+                {CONTACT_EMAIL}
+              </a>
+            </p>
+
+            <Button size="sm" variant="ghost" className="mt-4" asChild>
+              <Link href="/case-studies">
+                <Calendar />
+                Review case studies first
+              </Link>
+            </Button>
           </div>
         </motion.div>
       </div>
