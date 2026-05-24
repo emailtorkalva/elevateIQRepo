@@ -18,14 +18,14 @@ export const serviceImages = {
   iam: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80",
   appDev: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
   digital: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
-  devops: "https://images.unsplash.com/photo-1667372393118-2271edd16201?w=1200&q=80",
+  devops: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1200&q=80",
   dataWarehouse: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
   qa: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80",
   cloudData: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80",
   dataCenter: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
   managed: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
   staffing: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
-  cloud: "https://images.unsplash.com/photo-1451187580455-43479a941a24?w=1200&q=80",
+  cloud: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
 } as const;
 
 export type ServiceOffering = {
