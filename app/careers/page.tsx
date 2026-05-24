@@ -6,34 +6,16 @@ import { Navbar } from "@/components/home/navbar";
 import { SectionHeader } from "@/components/home/section-header";
 import { Button } from "@/components/ui/button";
 import { BRAND_NAME, CONTACT_EMAIL, HQ_ADDRESS } from "@/lib/brand";
-
-const openings = [
-  {
-    title: "Senior IAM Consultant",
-    location: "Atlanta, GA · Hybrid",
-    type: "Full-time",
-    summary: "Lead SSO, IGA, and PAM implementations for healthcare and financial services clients.",
-  },
-  {
-    title: "Cloud / DevOps Engineer",
-    location: "Remote (US)",
-    type: "Full-time",
-    summary: "Build landing zones, CI/CD pipelines, and observability for AWS and Azure programs.",
-  },
-  {
-    title: "Technical Recruiter",
-    location: "Atlanta, GA",
-    type: "Contract",
-    summary: "Source cloud, security, and engineering talent for client augmentation programs.",
-  },
-];
+import { getPublishedJobsForCareers } from "@/lib/jobs-server";
 
 export const metadata: Metadata = {
   title: `Careers | ${BRAND_NAME}`,
   description: `Join ${BRAND_NAME}—consulting roles in IAM, cloud, DevOps, and staffing.`,
 };
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const openings = await getPublishedJobsForCareers();
+
   return (
     <>
       <Navbar />
@@ -53,7 +35,7 @@ export default function CareersPage() {
           <ul className="mt-10 space-y-6">
             {openings.map((job) => (
               <li
-                key={job.title}
+                key={`${job.title}-${job.location}`}
                 className="rounded-2xl border border-border/80 bg-card p-6 sm:p-8"
               >
                 <div className="flex flex-wrap items-center gap-2">
